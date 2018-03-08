@@ -14,13 +14,16 @@ var createCircle=function(x,y){
 	r:10,
 	fill:"red",
 	circle: document.createElementNS("http://www.w3.org/2000/svg", "circle"),
+	remove:function(){
+	    slate.removeChild(this);  
+	},
 	action:function(e){
 	    a=e.target;
 	    if (a.getAttribute("fill")=="red"){
 		a.setAttribute("fill","purple");
 	    }
 	    else{
-		slate.removeChild(a);
+		this.remove();
 		ranX=Math.floor(Math.random()*481)+10; //generates random cors for new circle
 		ranY=Math.floor(Math.random()*481)+10;
 		b=createCircle(ranX, ranY);
